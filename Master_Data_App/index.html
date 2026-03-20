@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Data Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <div class="logo">Master Data App</div>
+        </div>
+        <div class="nav-right">
+            <input type="search" placeholder="Search..." class="search-bar">
+            <div class="user-profile">Admin</div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">Modules</div>
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-module="item">
+                    <span class="icon">📦</span>
+                    <span>Item</span>
+                </li>
+                <li class="menu-item" data-module="customer">
+                    <span class="icon">👤</span>
+                    <span>Customer</span>
+                </li>
+                <li class="menu-item" data-module="supplier">
+                    <span class="icon">🏢</span>
+                    <span>Supplier</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Item Module -->
+            <div id="item-module" class="module-content active">
+                <div class="page-header">
+                    <h1>Item</h1>
+                    <button class="btn-primary" onclick="toggleForm('item-form')">+ Add Item</button>
+                </div>
+
+                <!-- Item Form -->
+                <div id="item-form" class="form-container" style="display: none;">
+                    <div class="form-header">
+                        <h2>New Item</h2>
+                        <button class="btn-close" onclick="toggleForm('item-form')">×</button>
+                    </div>
+                    <form class="data-form">
+                        <div class="form-group">
+                            <label for="item-name">Item Name *</label>
+                            <input type="text" id="item-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-group">Item Group *</label>
+                            <select id="item-group" required>
+                                <option value="">Select...</option>
+                                <option value="products">Products</option>
+                                <option value="raw-materials">Raw Materials</option>
+                                <option value="services">Services</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-price">Price</label>
+                            <input type="number" id="item-price" step="0.01">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Save</button>
+                            <button type="button" class="btn-secondary" onclick="toggleForm('item-form')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Item List -->
+                <div class="list-container">
+                    <div class="list-header">
+                        <div class="list-filters">
+                            <input type="search" placeholder="Filter by name..." class="filter-input">
+                            <select class="filter-select">
+                                <option value="">All Groups</option>
+                                <option value="products">Products</option>
+                                <option value="raw-materials">Raw Materials</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Status</th>
+                                <th>Item Group</th>
+                                <th>ID</th>
+                                <th>Created On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>test01</strong></td>
+                                <td><span class="badge badge-success">Enabled</span></td>
+                                <td>Products</td>
+                                <td>test01</td>
+                                <td>10 m</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="list-footer">
+                        <span>1 of 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Module -->
+            <div id="customer-module" class="module-content">
+                <div class="page-header">
+                    <h1>Customer</h1>
+                    <button class="btn-primary" onclick="toggleForm('customer-form')">+ Add Customer</button>
+                </div>
+
+                <!-- Customer Form -->
+                <div id="customer-form" class="form-container" style="display: none;">
+                    <div class="form-header">
+                        <h2>New Customer</h2>
+                        <button class="btn-close" onclick="toggleForm('customer-form')">×</button>
+                    </div>
+                    <form class="data-form">
+                        <div class="form-group">
+                            <label for="customer-name">Customer Name *</label>
+                            <input type="text" id="customer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-group">Customer Group *</label>
+                            <select id="customer-group" required>
+                                <option value="">Select...</option>
+                                <option value="individual">Individual</option>
+                                <option value="company">Company</option>
+                                <option value="government">Government</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-territory">Territory</label>
+                            <select id="customer-territory">
+                                <option value="">Select...</option>
+                                <option value="all">All Territories</option>
+                                <option value="north">North</option>
+                                <option value="south">South</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Save</button>
+                            <button type="button" class="btn-secondary" onclick="toggleForm('customer-form')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Customer List -->
+                <div class="list-container">
+                    <div class="list-header">
+                        <div class="list-filters">
+                            <input type="search" placeholder="Filter by name..." class="filter-input">
+                            <select class="filter-select">
+                                <option value="">All Groups</option>
+                                <option value="individual">Individual</option>
+                                <option value="company">Company</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Status</th>
+                                <th>Customer Group</th>
+                                <th>Territory</th>
+                                <th>ID</th>
+                                <th>Created On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>John Doe</strong></td>
+                                <td><span class="badge badge-success">Enabled</span></td>
+                                <td>Individual</td>
+                                <td>All Territories</td>
+                                <td>John Doe</td>
+                                <td>1 w</td>
+                            </tr>
+                            <tr>
+                                <td><strong>test user</strong></td>
+                                <td><span class="badge badge-success">Enabled</span></td>
+                                <td>Individual</td>
+                                <td>All Territories</td>
+                                <td>test user</td>
+                                <td>1 w</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="list-footer">
+                        <span>2 of 2</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supplier Module -->
+            <div id="supplier-module" class="module-content">
+                <div class="page-header">
+                    <h1>Supplier</h1>
+                    <button class="btn-primary" onclick="toggleForm('supplier-form')">+ Add Supplier</button>
+                </div>
+
+                <!-- Supplier Form -->
+                <div id="supplier-form" class="form-container" style="display: none;">
+                    <div class="form-header">
+                        <h2>New Supplier</h2>
+                        <button class="btn-close" onclick="toggleForm('supplier-form')">×</button>
+                    </div>
+                    <form class="data-form">
+                        <div class="form-group">
+                            <label for="supplier-name">Supplier Name *</label>
+                            <input type="text" id="supplier-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier-group">Supplier Group</label>
+                            <select id="supplier-group">
+                                <option value="">Select...</option>
+                                <option value="hardware">Hardware</option>
+                                <option value="software">Software</option>
+                                <option value="services">Services</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier-country">Country</label>
+                            <input type="text" id="supplier-country">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Save</button>
+                            <button type="button" class="btn-secondary" onclick="toggleForm('supplier-form')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Supplier List -->
+                <div class="list-container">
+                    <div class="list-header">
+                        <div class="list-filters">
+                            <input type="search" placeholder="Filter by name..." class="filter-input">
+                            <select class="filter-select">
+                                <option value="">All Groups</option>
+                                <option value="hardware">Hardware</option>
+                                <option value="software">Software</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Supplier Name</th>
+                                <th>Status</th>
+                                <th>Supplier Group</th>
+                                <th>ID</th>
+                                <th>Created On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>test_supplier</strong></td>
+                                <td><span class="badge badge-success">Enabled</span></td>
+                                <td>-</td>
+                                <td>test_supplier</td>
+                                <td>now</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="list-footer">
+                        <span>1 of 1</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Minimal JavaScript for navigation (you can remove if strictly no JS)
+        function toggleForm(formId) {
+            const form = document.getElementById(formId);
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Module switching
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.module-content').forEach(m => m.classList.remove('active'));
+                
+                this.classList.add('active');
+                const module = this.getAttribute('data-module');
+                document.getElementById(module + '-module').classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
